@@ -26,7 +26,7 @@ export class TodoService {
     return await this.todoRepository.save(this.todoRepository.create(data));
   }
   async update(id: string, data: UpdateTodoDto) {
-    const todo = await this.todoRepository.findOneOrFail({ where: { id } });
+    const todo = await this.findOneOrFail(id);
     this.todoRepository.merge(todo, data);
     return await this.todoRepository.save(todo);
   }
